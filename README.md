@@ -44,7 +44,7 @@ poetry shell
 
 
 
-3️⃣ Run the App
+3️⃣ Run the App !
 
 python src/trivia_api.py
 
