@@ -1,0 +1,71 @@
+name: Python CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to main branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on pull requests to main branch
+
+jobs:
+  # Job for setting up the environment and running tests
+  test:
+    runs-on: ubuntu-latest  # The operating system to run the job on
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # Specify the Python version you want to use
+
+    # Step 3: Install Poetry
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    # Step 4: Install dependencies using Poetry
+    - name: Install dependencies
+      run: |
+        poetry install  # Install dependencies using Poetry
+
+    # Step 5: Run tests with pytest
+    - name: Run tests
+      run: |
+        poetry run pytest --maxfail=1 --disable-warnings -q  # Run tests with pytest
+
+    # Step 6: Lint the code with flake8
+    - name: Lint code
+      run: |
+        poetry run flake8 .  # Lint all Python files in the repository
+
+  # Job for deployment (optional)
+  deploy:
+    needs: test  # Ensure the deploy job runs after the test job
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    # Step 3: Install Poetry
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    # Step 4: Install dependencies using Poetry
+    - name: Install dependencies
+      run: |
+        poetry install
