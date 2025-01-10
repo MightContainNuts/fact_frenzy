@@ -22,13 +22,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'  # Specify the Python version you want to use
+        python-version: '3.12'  # Specify the Python version you want to use
 
     # Step 3: Install Poetry
     - name: Install Poetry
       run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        python -m pip install --upgrade pip
+        pip install poetry -v --retries 3
 
     # Step 4: Install dependencies using Poetry
     - name: Install dependencies
