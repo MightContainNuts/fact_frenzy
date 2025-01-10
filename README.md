@@ -14,7 +14,6 @@ Fact Frenzy is a Python-powered project designed to fetch fascinating trivia que
 	•	🔥 Fast and Reliable: Powered by requests and clean code principles.
 
 📦 Project Structure
-
 fact_frenzy/
 ├── src/
 │   ├── trivia_api.py       # API connection logic
@@ -24,6 +23,7 @@ fact_frenzy/
 ├── README.md               # You're reading it!
 ├── pyproject.toml          # Poetry configuration
 └── .pre-commit-config.yaml # Pre-commit hooks for code quality
+
 
 🚀 Getting Started
 
