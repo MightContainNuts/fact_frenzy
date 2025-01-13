@@ -1,19 +1,21 @@
 # fact_frenzy
-🎉 Fact Frenzy 🎉
+## 🎉 Fact Frenzy 🎉*
 
 Welcome to Fact Frenzy, the ultimate trivia API project that brings knowledge, fun, and curiosity together in one place! 🚀
 
-🌟 What is Fact Frenzy?
+## 🌟 What is Fact Frenzy?
 
 Fact Frenzy is a Python-powered project designed to fetch fascinating trivia questions from the The Trivia API. Whether you’re a quiz enthusiast, a curious learner, or just looking to spice up your app with some trivia fun, Fact Frenzy has got you covered! 🧠✨
 
-🛠️ Features
-	•	🌍 Categories Galore: Choose trivia questions from categories like science, history, sports, and more!
-	•	📊 Difficulty Levels: From easy peasy to brain-melting, pick your challenge!
-	•	🎯 Customizable Queries: Specify question types, tags, and limits for tailored trivia.
-	•	🔥 Fast and Reliable: Powered by requests and clean code principles.
+## 🛠️ Features
 
-📦 Project Structure
+- 🌍 Categories Galore: Choose trivia questions from categories like science, history, sports, and more!
+- 📊 Difficulty Levels: From easy peasy to brain-melting, pick your challenge!
+- 🎯 Customizable Queries: Specify question types, tags, and limits for tailored trivia.
+- 🔥 Fast and Reliable: Powered by requests and clean code principles.
+
+## 📦 Project Structure
+```
 fact_frenzy/
 ├── src/
 │   ├── trivia_api.py       # API connection logic
@@ -23,48 +25,48 @@ fact_frenzy/
 ├── README.md               # You're reading it!
 ├── pyproject.toml          # Poetry configuration
 └── .pre-commit-config.yaml # Pre-commit hooks for code quality
+```
 
+## 🚀 Getting Started
 
-🚀 Getting Started
-
-1️⃣ Clone the Repo
+### 1️⃣ Clone the Repo
 
 git clone https://github.com/MightContainNuts/fact-frenzy.git
 cd fact-frenzy
 
-2️⃣ Set Up the Environment
+### 2️⃣ Set Up the Environment
 	•	Install dependencies with Poetry:
 
-poetry install
+```poetry install```
 
 
-	•	Activate the environment:
+_Activate the environment:_
 
-poetry shell
+```poetry shell```
 
 
 
-3️⃣ Run the App !
+### 3️⃣ Run the App !
 
-python src/trivia_api.py
+```python src/trivia_api.py```
 
-🧪 Running Tests
+## 🧪 Running Tests
 
 We believe in clean, bug-free code! Run the tests using pytest:
 
-pytest
+```pytest```
 
-🎨 Code Style
+## 🎨 Code Style
 
 We enforce clean and consistent code with:
-	•	Black: Automatic code formatting.
-	•	Flake8: Style guide enforcement.
-	•	Pre-commit Hooks: Ensures all commits meet quality standards.
+- Black: Automatic code formatting.
+- Flake8: Style guide enforcement.
+- commit Hooks: Ensures all commits meet quality standards.
 
-🤖 API Example
+## 🤖 API Example
 
 Here’s how easy it is to fetch trivia:
-
+```
 from src.trivia_api import ConnectToApi
 
 api_instance = ConnectToApi(difficulty="medium", categories=["science"], limit=5)
@@ -72,22 +74,23 @@ trivia_questions = api_instance.connect_to_api()
 
 for question in trivia_questions:
     print(question["question"])
+```
 
-💡 Contributing
+## 💡 Contributing
 
 We welcome contributions! To get started:
-	1.	Fork the repo 🍴
-	2.	Create a feature branch 🌿
-	3.	Submit a pull request 🚀
+1. Fork the repo 🍴
+2. Create a feature branch 🌿
+3. Submit a pull request 🚀
 
-🎉 Fun Fact
+## 🎉 Fun Fact
 
 Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible! 🍯
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License. Feel free to use, modify, and distribute as you see fit!
 
-Made with ❤️ by MightContainNuts
+Made with ❤️ by _MightContainNuts_
 
-Let the trivia frenzy begin! 🎊
+**_Let the trivia frenzy begin!_** 🎊
