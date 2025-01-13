@@ -1,6 +1,6 @@
 class Utils:
     @staticmethod
-    def print_question(selected_question, correct_answer) -> None:
+    def print_question(selected_question) -> None:
         """
         print out question and answer
         :param selected_question:
@@ -8,8 +8,8 @@ class Utils:
         :return:
         :rtype:
         """
-        for question, answers in selected_question.items():
-            print(question)
-            for idx, answer in enumerate(answers, start=1):
-                print(f"{idx}: {answer}")
-            print(f"{correct_answer=}")
+        question, answers, correct_answer, question_value = selected_question
+        print(question)
+        for idx, answer in enumerate(answers, start=1):
+            print(f"{idx}: {answer}")
+        print(f"{correct_answer=}, {question_value=}")
