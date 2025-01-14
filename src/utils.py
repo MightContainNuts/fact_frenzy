@@ -14,7 +14,8 @@ class Utils:
         :return:
         :rtype:
         """
-        question, answers, correct_answer, question_value = qa_item
+        category, question, answers, correct_answer, question_value = qa_item
+        print(f"*** {category} ***")
         print(question)
         for idx, answer in enumerate(answers, start=1):
             print(f"{idx}: {answer}")

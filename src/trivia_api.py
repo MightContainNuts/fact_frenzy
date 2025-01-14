@@ -3,13 +3,16 @@ import requests
 from src.logger import setup_logger
 from typing import Tuple
 
+Category = str
 Question = str
 Answers = list[str]
 CorrectAnswer = str
 QuestionValue = int
 TriviaItem = dict[str : [str | list[str]]]  # noqa: E203
 TriviaList = list[TriviaItem]
-QATuple = Tuple[Question, Answers, CorrectAnswer, QuestionValue]  # noqa: E203
+QATuple = Tuple[
+    Category, Question, Answers, CorrectAnswer, QuestionValue
+]  # noqa: E203
 QAList = list[QATuple]  # noqa: E203# noqa: E203
 
 
@@ -135,6 +138,7 @@ class QAStorage:
 
     # create qa tuple from parsed trivia item
     def _create_qa_tuple(self, trivia_item: TriviaItem) -> QATuple:
+        category: Category = self._parse_category(trivia_item)
         question: Question = self._parse_question(trivia_item)
         correct_answer: CorrectAnswer = self._parse_correct_answer(trivia_item)
         incorrect_answers: Answers = self._parse_incorrect_answers(trivia_item)
@@ -144,7 +148,7 @@ class QAStorage:
         question_value: QuestionValue = self._calculate_points_for_question(
             trivia_item
         )
-        return question, answers, correct_answer, question_value
+        return category, question, answers, correct_answer, question_value
 
     def _parse_question(self, trivia_item: TriviaItem) -> Question:
         """
@@ -211,3 +215,11 @@ class QAStorage:
             trivia_item,
         )
         return question_value
+
+    def _parse_category(self, trivia_item: TriviaItem) -> Category:
+        """
+        parse category from trivia item
+        :return:
+        :rtype:
+        """
+        return trivia_item["category"]

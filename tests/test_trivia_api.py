@@ -6,6 +6,7 @@ from src.trivia_api import (
     TriviaList,
     Answers,
     CorrectAnswer,
+    Category,
 )
 import pytest
 
@@ -80,6 +81,7 @@ class TestTriviaRetrieval:
     ]
     test_data_storage: QAList = [
         (
+            "Category1",
             "Question_1",
             [
                 "Incorrect_Ans_1.1",
@@ -91,6 +93,7 @@ class TestTriviaRetrieval:
             1,
         ),
         (
+            "Category2",
             "Question_2",
             [
                 "Incorrect_Ans_2.1",
@@ -101,6 +104,7 @@ class TestTriviaRetrieval:
             2,
         ),
         (
+            "Catgegory3",
             "Question_3",
             [
                 "Incorrect_Ans_3.1",
@@ -145,6 +149,13 @@ class TestTriviaRetrieval:
         assert isinstance(test_incorrect_answers, list)
         assert len(test_incorrect_answers) == 3
 
+    def test_parse_category(self, test_instance):
+        test_category: Category = test_instance._parse_category(
+            self.test_trivia_item
+        )
+        assert isinstance(test_category, str)
+        assert test_category == "science"
+
     def test_create_list_random_answer(self, test_instance):
         correct_answer = test_instance._parse_correct_answer(
             self.test_trivia_item
@@ -185,13 +196,14 @@ class TestTriviaRetrieval:
             self.test_trivia_item
         )
         assert isinstance(qa_tuple, tuple)
-        assert len(qa_tuple) == 4
+        assert len(qa_tuple) == 5
         assert isinstance(qa_tuple[0], str)
-        assert isinstance(qa_tuple[1], list) and all(
+        assert isinstance(qa_tuple[1], str)
+        assert isinstance(qa_tuple[2], list) and all(
             isinstance(ans, str) for ans in qa_tuple[1]
         )
-        assert isinstance(qa_tuple[2], str)
-        assert isinstance(qa_tuple[3], int)
+        assert isinstance(qa_tuple[3], str)
+        assert isinstance(qa_tuple[4], int)
 
     def test_get_random_qa(self, test_instance):
         test_instance.qa_storage = self.test_data_storage
@@ -205,4 +217,4 @@ class TestTriviaRetrieval:
             test_instance.select_question_from_trivia_list()
         )
         assert isinstance(selected_qa, tuple)
-        assert len(selected_qa) == 4
+        assert len(selected_qa) == 5
